@@ -29,9 +29,14 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
-        pytest
+        pytest -v --junitxml=test-reports/report.xml --html=test-reports/report.html
       env:
         SELENIUM_DRIVER_KIND: remote
+    - name: Upload test reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-reports
+        path: test-reports
 
     services:
       headless:
