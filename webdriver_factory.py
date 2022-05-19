@@ -1,10 +1,12 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.webdriver import WebDriver as ChromeDriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.firefox.webdriver import WebDriver as FirefoxDriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.remote.webdriver import WebDriver
 
 import os
+
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class WebDriverFactory:
@@ -46,15 +48,7 @@ class WebDriverFactory:
 
     @staticmethod
     def get_chrome_driver():
-        options = webdriver.ChromeOptions()
-        prefs = {'profile.default_content_setting_values.notifications': 2, 'profile.default_content_setting_values'
-                                                                            '.geolocation': 2}
-        options.add_experimental_option("prefs", prefs)
-        driver = webdriver.Chrome('C:/Users/Work/PycharmProjects/miroshnychenko_homework-bizibaza/chromedriver.exe',
-                                  options=options)
-        driver.maximize_window()
-        driver.implicitly_wait(5)
-        return driver
+        return webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     @staticmethod
     def get_remote_driver():
