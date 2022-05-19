@@ -36,4 +36,5 @@ jobs:
     services:
       headless:
         image: browserless/chrome:latest
-        
+        ports:
+          - 3000:3000
