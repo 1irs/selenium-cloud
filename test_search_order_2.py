@@ -28,6 +28,9 @@ class SearchOrder2Test(unittest.TestCase):
         """Выполняется один раз после всех тестов"""
         cls.driver.quit()
 
+    def tearDown(self) -> None:
+        self.driver.save_screenshot('test-reports/' + self.id() + '.png')
+
     def test_price_low_high(self):
         """От дешевых к дорогим"""
 
