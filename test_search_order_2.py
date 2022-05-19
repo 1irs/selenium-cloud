@@ -21,7 +21,8 @@ class SearchOrder2Test(unittest.TestCase):
         cls.search_page.open()
 
     def setUp(self) -> None:
-        self.driver = SearchOrder2Test.search_page
+        self.search_page = SearchOrder2Test.search_page
+        self.driver = SearchOrder2Test.driver
 
     @classmethod
     def tearDownClass(cls) -> None:
