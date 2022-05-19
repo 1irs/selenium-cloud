@@ -30,6 +30,8 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+      env:
+        SELENIUM_DRIVER_KIND: remote
 
     services:
       headless:
